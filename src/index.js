@@ -29,10 +29,28 @@ function testTree() {
     const array = [10, 20, 30, 40, 50, 1, 100, 65, 64, 67, 80];
     console.log(`Creating BST from array: ${array}`);
     const bst = new Tree(array);
+    // Print the BST using prettyPrint
     console.log('Pretty printing the BST:');
     prettyPrint(bst.root);
-    console.log('Reached end of testTree()');
+    // Check if the initial tree is balanced
     console.log('Is the tree balanced?: ', bst.isBalanced());
+    // Insert new values
+    let newValue = 150;
+    console.log(`Inserting value ${newValue}...`);
+    bst.insert(newValue);
+    prettyPrint(bst.root);
+    newValue = 250;
+    console.log(`Inserting value ${newValue}...`);
+    bst.insert(newValue);
+    prettyPrint(bst.root);
+    newValue = 1250;
+    console.log(`Inserting value ${newValue}...`);
+    bst.insert(newValue);
+    prettyPrint(bst.root);
+    // Check if the new tree is balanced
+    console.log('Is the tree balanced?: ', bst.isBalanced());
+
+    console.log('Reached end of testTree()');
 }
 
 testTree();

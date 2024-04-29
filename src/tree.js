@@ -65,6 +65,33 @@ class Tree {
         }
         return 0;
     }
+
+    // Insert a value into the BST
+    insert(value) {
+        this.root = this.insertNode(this.root, value);
+    }
+
+    // Recursive-traversal method to insert a value into the BST
+    insertNode(node, value) {
+        // If the current node is null, create a new node with the passed value
+        if (node === null) {
+            return new Node(value);
+        }
+        // Insert to the left if value is less than the current node's value
+        if (value < node.value) {
+            const newNode = node;
+            newNode.leftChild = this.insertNode(node.leftChild, value);
+            return newNode;
+        }
+        // Insert to the right if value is greater than the current node's value
+        if (value > node.value) {
+            const newNode = node;
+            newNode.rightChild = this.insertNode(node.rightChild, value);
+            return newNode;
+        }
+        // Return the current node on equal
+        return node;
+    }
 }
 
 export default Tree;
