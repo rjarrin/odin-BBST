@@ -26,6 +26,45 @@ class Tree {
         root.rightChild = this.buildTree(sortedArray.slice(middleIndex + 1));
         return root;
     }
+
+    // Check if the BST is balanced (i.e., height difference between left and right subtrees of every node is <=1)
+    isBalanced() {
+        return this.isBalancedHelper(this.root);
+    }
+
+    // Helper function to recursively check if a subtree is balanced
+    isBalancedHelper(node) {
+        // Case: Empty tree is balanced
+        if (node === null) {
+            return true;
+        }
+        // Calculate the height of the left and right subtree
+        const leftHeight = this.height(node.leftChild);
+        const rightHeight = this.height(node.rightChild);
+        // Calculate the absolute difference between the two subtree heights
+        const diff = Math.abs(leftHeight - rightHeight);
+        if (diff <= 1) {
+            // Recursively check the left and right subtrees for balance
+            return (
+                this.isBalancedHelper(node.leftChild) &&
+                this.isBalancedHelper(node.rightChild)
+            );
+        }
+        // If the difference is more than 1, the subtree is unbalanced
+        return false;
+    }
+
+    // Calculate the height of the given node
+    height(node) {
+        if (node !== null) {
+            // Recursively calculate the height of the left and right subtree
+            const leftHeight = this.height(node.leftChild);
+            const rightHeight = this.height(node.rightChild);
+            // Return the maximum height of the two subtrees (+1 for the current node)
+            return Math.max(leftHeight, rightHeight) + 1;
+        }
+        return 0;
+    }
 }
 
 export default Tree;

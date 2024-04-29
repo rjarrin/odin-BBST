@@ -32,6 +32,7 @@ function testTree() {
     console.log('Pretty printing the BST:');
     prettyPrint(bst.root);
     console.log('Reached end of testTree()');
+    console.log('Is the tree balanced?: ', bst.isBalanced());
 }
 
 testTree();
