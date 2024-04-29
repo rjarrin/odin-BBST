@@ -8,7 +8,7 @@ class Tree {
         this.root = this.buildTree(array);
     }
 
-    // Build the BST from the parameter array
+    // Build the BST from the parameter array and returns the level-0 root node
     buildTree(array) {
         // Remove dulpicates from the array by converting it to a Set
         const unqiueArray = new Set(array);
