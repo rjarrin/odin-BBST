@@ -29,11 +29,13 @@ function testTree() {
     const array = [10, 20, 30, 40, 50, 1, 100, 65, 64, 67, 80];
     console.log(`Creating BST from array: ${array}`);
     const bst = new Tree(array);
+
     // Print the BST using prettyPrint
     console.log('Pretty printing the BST:');
     prettyPrint(bst.root);
     // Check if the initial tree is balanced
     console.log('Is the tree balanced?: ', bst.isBalanced());
+
     // Insert new values
     let newValue = 150;
     console.log(`Inserting value ${newValue}...`);
@@ -47,6 +49,7 @@ function testTree() {
     console.log(`Inserting value ${newValue}...`);
     bst.insert(newValue);
     prettyPrint(bst.root);
+
     // Check if the new tree is balanced
     console.log('Is the tree balanced?: ', bst.isBalanced());
     // Run rebalance if tree is unbalanced
@@ -72,6 +75,7 @@ function testTree() {
     }
     console.log(`The new root is ${bst.root.value}`);
     prettyPrint(bst.root);
+
     // Find a value
     const valueToFind = 20;
     console.log(`Searching for value ${valueToFind}`);
@@ -80,6 +84,10 @@ function testTree() {
     } else {
         console.log(`Is ${valueToFind} present?: false`);
     }
+
+    // Perform traversals
+    console.log(`Performing in-order traversal: ${bst.inOrder()}`);
+    console.log(`Performing pre-order traversal: ${bst.preOrder()}`);
 
     console.log('Reached end of testTree()');
 }

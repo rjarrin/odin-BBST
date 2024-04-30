@@ -178,7 +178,7 @@ class Tree {
 
     // Find a value in the tree
     find(value) {
-        return this.findMinNode(this.root, value);
+        return this.findNode(this.root, value);
     }
 
     // Recursively search for the value
@@ -195,6 +195,27 @@ class Tree {
         }
         // If the value is greater than the current node's value, return the node
         return node;
+    }
+
+    // Perform pre-order traversal of the tree
+    preOrder() {
+        const result = [];
+        this.preOrderTraversal(this.root, (node) => {
+            result.push(node.value);
+        });
+        return result;
+    }
+
+    // Recursive in-order traversal
+    preOrderTraversal(node, callback) {
+        if (node !== null) {
+            // Invoke the callback to push the node value
+            callback(node);
+            // Recursively traverse the left subtree
+            this.preOrderTraversal(node.leftChild, callback);
+            // Recursively traverse the right subtree
+            this.preOrderTraversal(node.rightChild, callback);
+        }
     }
 }
 
