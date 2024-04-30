@@ -258,6 +258,35 @@ class Tree {
         // Return the result array
         return result;
     }
+
+    // Return the given node's depth
+    depth(node) {
+        // If node does not exist, return invalid value (-1)
+        if (node === null) return -1;
+        // Case: Depth of root node is 0
+        if (node === this.root) return 0;
+        // Recursively find the parent of the node
+        const parent = this.findParent(this.root, node);
+        // If the node is not in the tree, return invalid value
+        if (parent === null) return -1;
+        // Otherwise, return the depth of the parent + 1
+        return this.depth(parent) + 1;
+    }
+
+    // Helper function to find the parent of a given node
+    findParent(currentNode, node) {
+        // Case: Reached the end of a branch
+        if (currentNode === null) return null;
+        // Compare children with the node. If matched, current node is the parent
+        if (currentNode.leftChild === node || currentNode.rightChild === node)
+            return currentNode;
+        // Recursively search the left subtree for the parent
+        const leftParent = this.findParent(currentNode.leftChild, node);
+        // If the left subtree contains the node, return the left parent
+        if (leftParent !== null) return leftParent;
+        // If the left subtree does not contain the node, recursively search the right subtree for the parent
+        return this.findParent(currentNode.rightChild, node);
+    }
 }
 
 export default Tree;

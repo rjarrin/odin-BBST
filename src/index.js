@@ -91,6 +91,12 @@ function testTree() {
     console.log(`Performing post-order traversal: ${bst.postOrder()}`);
     console.log(`Performing level-order traversal: ${bst.levelOrder()}`);
 
+    // Test depth function
+    const testValue = 50; // Choose a value that exists in the tree
+    console.log(
+        `Depth of value ${testValue}: ${bst.depth(bst.find(testValue))}`,
+    );
+
     console.log('Reached end of testTree()');
 }
 
