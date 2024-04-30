@@ -121,6 +121,60 @@ class Tree {
             this.inOrderTraversal(node.rightChild, callback);
         }
     }
+
+    // Delete a value from the BST
+    deleteItem(value) {
+        this.root = this.deleteNode(this.root, value);
+    }
+
+    // Recursively traverse the BST to delete the desired node
+    deleteNode(node, value) {
+        const newNode = node;
+        // If the current node is null, the value is not in the tree
+        if (node === null) {
+            return null;
+        }
+        // Traverse the left subtree if value is less than the current node's value
+        if (value < node.value) {
+            newNode.leftChild = this.deleteNode(node.leftChild, value);
+        }
+        // Traverse the right subtree if the value is more than the current node's value
+        else if (value > node.value) {
+            newNode.rightChild = this.deleteNode(node.rightChild, value);
+        }
+        // If the value is equal to the current node, handle the deletion based on the number of children
+        else {
+            // Case: Node without children - remove the node
+            if (node.leftChild === null && node.rightChild === null) {
+                return null;
+            }
+            // Case: Node with one child - replace the node with its child
+            if (node.leftChild === null) {
+                return newNode.rightChild;
+            }
+            if (node.rightChild === null) {
+                return newNode.leftChild;
+            }
+            // Case: Node with two children - find the minimum value in the right subtree, replace the current node's value with it, and then delete that min value
+            const tempNode = this.findMinNode(node.rightChild);
+            newNode.value = tempNode.value;
+            newNode.rightChild = this.deleteNode(
+                node.rightChild,
+                tempNode.value,
+            );
+        }
+        return newNode;
+    }
+
+    // Recursively find the node with the minimum value in the subtree
+    findMinNode(node) {
+        // If the current node has no left child, it is the minimum node
+        if (node.leftChild === null) {
+            return node;
+        }
+        // Otherwise, continue searching in the left subtree
+        return this.findMinNode(node.leftChild);
+    }
 }
 
 export default Tree;

@@ -58,6 +58,21 @@ function testTree() {
     // Check if the new tree is balanced
     console.log('Is the tree balanced?: ', bst.isBalanced());
 
+    // Delete a value
+    const deleteValue = 10;
+    console.log(`Deleting value ${deleteValue}, 40, and 65...`);
+    bst.deleteItem(deleteValue);
+    bst.deleteItem(40);
+    bst.deleteItem(65);
+    // Check if the new tree is balanced
+    console.log('Is the tree balanced?: ', bst.isBalanced());
+    // Run rebalance if tree is unbalanced
+    if (!bst.isBalanced()) {
+        bst.rebalance();
+    }
+    console.log(`The new root is ${bst.root.value}`);
+    prettyPrint(bst.root);
+
     console.log('Reached end of testTree()');
 }
 
