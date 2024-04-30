@@ -88,6 +88,7 @@ function testTree() {
     // Perform traversals
     console.log(`Performing in-order traversal: ${bst.inOrder()}`);
     console.log(`Performing pre-order traversal: ${bst.preOrder()}`);
+    console.log(`Performing post-order traversal: ${bst.postOrder()}`);
 
     console.log('Reached end of testTree()');
 }

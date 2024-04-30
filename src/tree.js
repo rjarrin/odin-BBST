@@ -206,7 +206,7 @@ class Tree {
         return result;
     }
 
-    // Recursive in-order traversal
+    // Recursive pre-order traversal
     preOrderTraversal(node, callback) {
         if (node !== null) {
             // Invoke the callback to push the node value
@@ -215,6 +215,27 @@ class Tree {
             this.preOrderTraversal(node.leftChild, callback);
             // Recursively traverse the right subtree
             this.preOrderTraversal(node.rightChild, callback);
+        }
+    }
+
+    // Perform post-order traversal of the tree
+    postOrder() {
+        const result = [];
+        this.postOrderTraversal(this.root, (node) => {
+            result.push(node.value);
+        });
+        return result;
+    }
+
+    // Recursive post-order traversal
+    postOrderTraversal(node, callback) {
+        if (node !== null) {
+            // Recursively traverse the left subtree
+            this.postOrderTraversal(node.leftChild, callback);
+            // Recursively traverse the right subtree
+            this.postOrderTraversal(node.rightChild, callback);
+            // Invoke the callback to push the node value
+            callback(node);
         }
     }
 }
