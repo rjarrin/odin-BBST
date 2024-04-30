@@ -92,6 +92,35 @@ class Tree {
         // Return the current node on equal
         return node;
     }
+
+    // Rebalances the BST by creating a new tree from the in-order traversal of the current tree
+    rebalance() {
+        // Perform the in-order traversal to get sorted array of BST
+        const array = this.inOrder();
+        // Build a new balanced BST from the sorted array
+        this.root = this.buildTree(array);
+    }
+
+    // Perform in-order traversal of the tree
+    inOrder() {
+        const result = [];
+        this.inOrderTraversal(this.root, (node) => {
+            result.push(node.value);
+        });
+        return result;
+    }
+
+    // Recursive in-order traversal
+    inOrderTraversal(node, callback) {
+        if (node !== null) {
+            // Recursively traverse the left subtree
+            this.inOrderTraversal(node.leftChild, callback);
+            // Invoke the callback to push the node value
+            callback(node);
+            // Recursively traverse the right subtree
+            this.inOrderTraversal(node.rightChild, callback);
+        }
+    }
 }
 
 export default Tree;

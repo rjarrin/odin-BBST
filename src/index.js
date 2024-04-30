@@ -49,6 +49,14 @@ function testTree() {
     prettyPrint(bst.root);
     // Check if the new tree is balanced
     console.log('Is the tree balanced?: ', bst.isBalanced());
+    // Run rebalance if tree is unbalanced
+    if (!bst.isBalanced()) {
+        bst.rebalance();
+    }
+    console.log(`The new root is ${bst.root.value}`);
+    prettyPrint(bst.root);
+    // Check if the new tree is balanced
+    console.log('Is the tree balanced?: ', bst.isBalanced());
 
     console.log('Reached end of testTree()');
 }
