@@ -72,6 +72,14 @@ function testTree() {
     }
     console.log(`The new root is ${bst.root.value}`);
     prettyPrint(bst.root);
+    // Find a value
+    const valueToFind = 20;
+    console.log(`Searching for value ${valueToFind}`);
+    if (bst.find(valueToFind)) {
+        console.log(`Is ${valueToFind} present?: true`);
+    } else {
+        console.log(`Is ${valueToFind} present?: false`);
+    }
 
     console.log('Reached end of testTree()');
 }

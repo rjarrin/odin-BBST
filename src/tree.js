@@ -175,6 +175,27 @@ class Tree {
         // Otherwise, continue searching in the left subtree
         return this.findMinNode(node.leftChild);
     }
+
+    // Find a value in the tree
+    find(value) {
+        return this.findMinNode(this.root, value);
+    }
+
+    // Recursively search for the value
+    findNode(node, value) {
+        // If the current node is null, return null
+        if (node === null) return null;
+        // If the value is less than the current's value, search in the left subtree
+        if (value < node.value) {
+            return this.findNode(node.leftChild, value);
+        }
+        // If the value is greater than the current's value, search in the right subtree
+        if (value > node.value) {
+            return this.findNode(node.rightChild, value);
+        }
+        // If the value is greater than the current node's value, return the node
+        return node;
+    }
 }
 
 export default Tree;
