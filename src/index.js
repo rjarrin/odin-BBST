@@ -23,10 +23,15 @@ function prettyPrint(node, prefix = '', isLeft = true) {
     }
 }
 
+function generateRandomArray(size) {
+    return Array.from({ length: size }, () => Math.floor(Math.random() * 100));
+}
+
 function testTree() {
     console.log('Testing BST...');
-    // Create a BST from an array of numbers  TODO: USE RANDOM NUMBERS FOR FINAL TESTING
-    const array = [10, 20, 30, 40, 50, 1, 100, 65, 64, 67, 80];
+    // Create a BST from an array of numbers
+    // const array = [10, 20, 30, 40, 50, 1, 100, 65, 64, 67, 80];
+    const array = generateRandomArray(10);
     console.log(`Creating BST from array: ${array}`);
     const bst = new Tree(array);
 
