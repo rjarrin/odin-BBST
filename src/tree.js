@@ -238,6 +238,26 @@ class Tree {
             callback(node);
         }
     }
+
+    // Perform a level-order traversal of the tree
+    levelOrder() {
+        // Initialize an array to store the node values
+        const result = [];
+        // Initialize a queue with the root node
+        const queue = [this.root];
+        // While the queue is not empty
+        while (queue.length > 0) {
+            // Dequeue a node
+            const node = queue.shift();
+            // Add the node's value to the result array
+            result.push(node.value);
+            // Enqueue the left and right children of the node
+            if (node.leftChild) queue.push(node.leftChild);
+            if (node.rightChild) queue.push(node.rightChild);
+        }
+        // Return the result array
+        return result;
+    }
 }
 
 export default Tree;
